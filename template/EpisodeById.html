@@ -1,0 +1,191 @@
+<style>
+    .root{
+        display: flex;
+        justify-content: center;
+        align-item: baseline;
+          background: #F3F2EE;
+        height:100vh;
+    }
+    .subdiv{
+
+          width:800px;
+          background:#FFF;
+          padding:20px;
+          border-radius:5px;
+    }
+    .gap{
+       margin-bottom:10px;
+    }
+    .btncenter{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+    }
+    .btnsize{
+         width:200px;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script defer src="http://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <title>Episodes</title>
+</head>
+<body>
+    <div class="root">
+        <div class="subdiv">
+            <form action="/editdeleteepisode">
+                <input type="hidden" value="{{ row.2 }}" name="episodeid">
+            <div class="row gap">
+                <div class="col" style="display: flex; justify-content: center; align-item: center; font-size: 20px; font-weight: bold; letter-spacing: 3px; margin-bottom:30px">
+                    <div style="display: flex; justify-content:center; align-item: center; width:550px">
+                        <b>UPDATE EPISODES</b>
+                    </div>
+                    <div  style="display:flex; justify-content: right; align-item: right; width:100px">
+                        <a href="/displayallepisodes"><div class="button is-primary is-light">Episodes List</div></a>
+                    </div>
+                </div>
+            </div>
+             <div class="row gap" >
+                    <div class="col">
+                      <div class="col">
+                        <select name="categoryid" id="cid" style="width: 330px; height: 40px">
+                                <option value="{{ row.0 }}">{{ row.8 }}</option>
+                        </select>
+                    </div>
+                    </div>
+                  <div class="col">
+                        <div class="col">
+                        <select name="showid" id="sid" style="width: 330px; height: 40px">
+                                <option value="{{ row.1 }}">{{ row.9 }}</option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
+             <div class="row gap">
+                  <div class="col">
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input name="episodenumber" class="input" type="text" placeholder="Episode Number" value="{{ row.3 }}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-caret-down "></i>
+                                </span>
+                            </p>
+                        </div>
+                </div>
+             </div>
+             <div class="row gap" >
+                <div class="col">
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input name="description" class="input" type="text" placeholder="Description" value="{{ row.4 }}">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-align-justify "></i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div><br>
+             <div class="row gap">
+                <div class="col btncenter">
+                    <button type="submit" name="btn" value="Edit" class="button is-info btnsize">Edit</button>
+                </div>
+                <div class="col btncenter">
+                    <button type="submit" name="btn" value="Delete" class="button is-info btnsize">Delete</button>
+                </div>
+            </div><br>
+            </form>
+               <div class="row" style="margin-top: 15px;">
+                <div class="col" style="display: flex; justify-content: center; align-item: center; font-size: 14px; font-weight: bold;letter-spacing:1px; margin-bottom:10px;">
+                    {% if status %}
+                         <div style="color:green;">
+                             Record Updated Successfully
+                         </div>
+                      {% elif status %}
+                         <div style="color:red;">
+                             Fail to Update Record
+                         </div>
+                    {% endif %}
+
+                </div>
+            </div>
+            <form action="/editepisodeposter" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                <input type="hidden" value="{{ row.2 }}" name="episodeid">
+                <input type="hidden" value="{{ row.5 }}" name="filename1">
+             <div class="row gap">
+                <div class="col"  style="display:flex; justify-content: center; align-item: center; width:150px;">
+                    <div class="file">
+                        <label class="file-label">
+                            <input name="poster" class="file-input" type="file"  required>
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                </span>
+                                <span class="file-label">
+                                    Upload Poster
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                 <div class="col btncenter">
+                    <button type="submit" class="button is-info btnsize">Edit Poster</button>
+                </div>
+             </div>
+            </form>
+            <form action="/editepisodetrailer" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                <input type="hidden" value="{{ row.2 }}" name="episodeid">
+                <input type="hidden" value="{{ row.6 }}" name="filename2">
+             <div class="row gap">
+                <div class="col" style="display:flex; justify-content: center; align-item: center; width:150px;">
+                      <div class="file">
+                        <label class="file-label">
+                            <input name="trailer" class="file-input" type="file"  required>
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                </span>
+                                <span class="file-label">
+                                    Uplaod Trailer
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                  <div class="col btncenter">
+                    <button type="submit" class="button is-info btnsize">Edit Trailer</button>
+                </div>
+             </div>
+            </form>
+            <form action="/editepisodevideo" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                <input type="hidden" value="{{ row.2 }}" name="episodeid">
+                <input type="hidden" value="{{ row.7 }}" name="filename3">
+             <div class="row gap">
+                <div class="col" style="display:flex; justify-content: center; align-item: center; width:150px;">
+                      <div class="file">
+                        <label class="file-label">
+                            <input name="video" class="file-input" type="file"  required>
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                </span>
+                                <span class="file-label">
+                                    Uplaod Video
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                  <div class="col btncenter">
+                    <button type="submit" class="button is-info btnsize">Edit Video</button>
+                </div>
+            </div><br>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

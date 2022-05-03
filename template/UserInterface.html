@@ -1,0 +1,766 @@
+<script>
+function show()
+        { var name=mobileno.value
+          var error=false
+          for(i=0;i<name.length;i++)
+          { v=name.charCodeAt(i)
+          if((v>=48 && v<=57))
+          {error=true
+          }
+          else{
+
+              break
+          }
+          }
+          if(error)
+          {
+              msg1.innerHTML=""
+          }
+          else{
+          msg1.innerHTML="<font color='red'>Please enter valid mobile number</font>"
+          }
+        }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script defer src="http://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+	 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="/static/vs.js/"></script>
+	<style>
+		 .zoom:hover{
+		          background-color: #000;
+		          transition: transform 1s;
+		          transform: scale(1.08);
+		 }
+		         input{
+                      border: 0;
+                      outline: 0;
+                      color:#FFF;
+                      background: #2c2c54;
+                      margin-top:10px;
+                      padding:2px;
+                      margin-left:4px;
+                      width:200px;
+        }
+       .searchbtn{
+              padding:0;
+              margin:0;
+              background:#000;
+              font-size:17px;
+              font-weight:bold;
+        }
+        .mobileinput{
+                display:flex;
+                flex-direction:row;
+                color:#FFF;
+                width:100%;
+                justify-content:center;
+                align-items:center;
+        }
+                .table{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            color: white;
+            margin-top: 20px;
+            background: #2c2c54
+
+        }
+
+            .button1{
+            border: 2px solid aqua;
+            width: 230px;
+            height: 80px;
+            margin-left: 40px;
+            border-radius: 5px;
+            color:#FFF;
+        }
+             .button2{
+            border: 2px solid #3867d6;
+            width: 775px;
+            height: 55px;
+            margin-left: 40px;
+            margin-right: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            background-color: #3867d6;
+            color: white;
+            text-align: center;
+            padding-top:15px;
+            font-weight: bolder;
+            font-size: 15px;
+
+        }
+         .button1 a:link,.button1 a:visited{
+            color: white;
+            text-decoration: none;
+
+        }
+        .button1:hover,.button1:active{
+            background-color:rgb(95, 158, 160);
+            color:#FFF;
+        }
+       .dropbtn{
+              color:#fff200;
+              padding:5px;
+              margin-right: 20px;
+              font-size: 16px;
+              font-weight: bold;
+              letter-spacing: 1px;
+              background-color:#000;
+              border:none;
+              cursor:pointer;
+        }
+        .dropdown{
+              position:relative;
+              display:inline-block;
+        }
+        .dropcontent{
+              display:none;
+              position:absolute;
+              background-color: #000;
+              width: 100%;
+              overflow:auto;
+              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+              z-index: 1;
+        }
+        .dropcontent a {
+               color: #fff200;
+               padding:2px 16px;
+               text-decoration: none;
+               display: block;
+
+        }
+        .dropcontent a:hover {
+               background-color:#000;
+        }
+        .dropdown:hover .dropcontent {
+                display: block;
+        }
+        table{
+        border:none;
+        }
+        td{
+        border-bottom-color:#2c2c54;
+        }
+        td{
+        color:#FFF;
+        }
+
+          .container{
+          position: relative;
+      }
+      .img{
+            display: block;
+            opacity: 1;
+        }
+        .middle{
+            position:absolute;
+            bottom: 0;
+            left: 0;
+            width: 144px;
+            height:auto;
+            opacity: 0;
+
+        }
+        .container:hover .middle{
+            opacity: 1;
+        }
+        .text{
+            box-shadow: #2f3640 0px -20px 25px 0px inset, #2f3640 0px -60px 30px 0px inset, #2f3640 0px 4px 2px, #2f3640 0px 8px 4px;
+            color:white;
+            font-size: 10px;
+            padding: 5px;
+            border-radius:5px;
+            }
+
+        .container2{
+            display:flex;
+            color: rgba(255, 255, 255, 0.644);
+
+        }
+                .box1{
+            background-color: black;
+            width: 50%;
+            overflow: auto;
+            padding: 10px 0px;
+        }
+        .box1 a{
+            color: rgba(255, 255, 255, 0.637);
+            text-decoration: none;
+            padding: 10px;
+        }
+        .box1 a:hover{
+    color: #0984e3;
+}
+
+                .box2{
+            background-color: black;
+            width:25%;
+            text-align: center;
+            padding: 10px 0px;
+
+        }
+        .i{
+            font-size: 50px;
+            padding: 5px;
+            color: rgba(255, 255, 255, 0.603);
+            margin: 10px 0px;
+
+        }
+                .i:hover{
+                color:#74b9ff;
+            transform: scale(1.13);
+        }
+                .box3{
+            background-color: black;
+            width:25%;
+            text-align: center;
+            padding: 10px 0px;
+
+        }
+               .box3 img{
+            width:130px;
+            height: 50px;
+            padding: 5px;
+            margin:10px 0px;
+        }
+           .box3 img:hover{
+            transform: scale(1.08);
+        }
+        .font{
+        font-size: 20px;
+        font-weight: bold;
+}
+
+	</style>
+    <title>Video Stream</title>
+</head>
+<body>
+<div style="background: #000; height:auto; padding:5px;">
+<div style="background: #000; display: flex; flex-direction: row; align-items: center">
+    <div style=" margin:5px;">
+        <img src="/static/dh.svg">
+    </div>
+    <div style="margin-right: 20px;"></div>
+    <div>
+     <div class="dropdown">
+        <div class="dropbtn" >Movies</div>
+        <div class="dropcontent">
+            <a href="/movies">Hindi</a>
+            <a href="/englishmovies">English</a>
+            <a href="#">Tamil</a>
+        </div>
+     </div>
+    </div>
+    {% for row in rows %}
+        <div style="color:#fff200;padding:5px; margin-right: 20px; font-size: 16px; font-weight: bold; letter-spacing: 1px;" >
+            {{ row.1 }}
+        </div>
+    {% endfor %}
+    <div style="padding: 5px; margin-left: auto; justify-content: right; display:flex; flex-direction:row;">
+        <div style=" border-bottom: 2px solid grey; margin-right:15px; ">
+           <input class="searchbtn" id="st" type="text" placeholder="Search...">
+            <span ><i class="fas fa-search"></i></span>
+        </div>
+        <div id="username" style=" color:#FFF;font-size: 16px;font-weight: bold; border-color: #FFF; padding:3px; margin-right:15px;">{{ user.1 }}</div>
+        <a  style="background:#1f80e0; color:#FFF;font-size: 12px;font-weight: bold; border-color: #000; margin-right:5px;" class = "button  modal-button" data-target = "#subscribe">SUBSCRIBE</a>
+        {% if ses %}
+             <a href="/userlogout" style="background:#4cd137; color:#FFF;font-size: 12px;font-weight: bold; border-color: #000; margin-right:5px;" class = "button  modal-button">LOGOUT</a>
+        {% else %}
+            <a  style="background:#4cd137; color:#FFF;font-size: 12px;font-weight: bold; border-color: #000; margin-right:5px;" class = "button  modal-button" data-target = "#modal">LOGIN</a>
+        {% endif %}
+    </div>
+</div>
+	<!----------Dialog ------>
+<div id = "modal" class = "modal">
+  <div class="modal-background"></div>
+  <div style="width:400px; height:250px; background: #2c2c54; " class="modal-content">
+      <div style="font-weight:700; font-size: 18px; color:#FFF;padding: 10px; margin-top: 20px;margin-left: 35px; ">Login to continue</div>
+	  <div style="border-bottom: 2px solid #1e90ff; width:300px; margin-left:35px;">
+		  <span style="color:#FFF;">+91 |</span>
+		  <input type="text" placeholder="Enter your mobile number" id="mobileno"  maxlength="10" title="Please enter valid mobile number" onkeyup="show()">
+	  </div>
+	  <div id="msg1" style="width:200px; margin-left:35px; font-size:13px; margin-top:10px;"></div>
+	  <button id="m_close" data-target = "#modalotp" class="button is-link is-hovered" style="width:300px; margin-top:25px; margin-left:35px;">Continue</button>
+
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+		<!----------otp ------>
+<div id = "modalotp" class = "modal">
+  <div class="modal-background"></div>
+  <div style="width:400px; height:300px; background: #2c2c54; " class="modal-content">
+      <div style="font-weight:700; font-size: 18px; color:#FFF; margin-top: 20px;margin-left: 35px; ">OTP</div>
+	  <div style="font-weight:700; font-size: 18px; color:#FFF;margin-left: 35px; margin-top: 10px;">Enter the 4-digit code sent to</div>
+	  <div id="show_mobile" style="font-weight:700; font-size: 18px; color:#FFF;margin-left: 35px; "></div>
+	  <div style="display:inline; margin-left:35px;" >
+		  <input type="text" style="border-bottom: 2px solid #1e90ff; width:40px;">
+		  <input type="text" style="border-bottom: 2px solid #1e90ff; width:40px; ">
+		  <input type="text" style="border-bottom: 2px solid #1e90ff; width:40px; ">
+		  <input type="text" style="border-bottom: 2px solid #1e90ff; width:40px; ">
+	  </div>
+	  <div style="font-weight:700; font-size: 18px; color:#FFF;margin-left: 35px;margin-top: 20px;  ">Resent code</div>
+
+	  <button id="m_close2" data-target="#modaldetail" class="button is-link is-hovered" style="width:300px; margin-top:25px; margin-left:35px;">Continue</button>
+
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+			<!----------user detail ------>
+<div id = "modaldetail" class = "modal">
+  <div class="modal-background"></div>
+  <div style="width:400px; height:300px; background: #2c2c54; " class="modal-content">
+      <div style="font-weight:700; font-size: 18px; color:#FFF; margin-top: 20px;margin-left: 35px; ">Tell us about yourself</div>
+	  <input type="text" placeholder="Your Name" id="lusername" style="border-bottom: 2px solid #1e90ff; margin-top: 20px;margin-left: 35px; width:300px;" >
+	   <input type="text" placeholder="Age" id="age" style="border-bottom: 2px solid #1e90ff; margin-top: 10px;margin-left: 35px; width:300px;" >
+	   <div class="mobileinput" style="border-bottom: 2px solid #1e90ff; width:300px; margin-left:35px;">
+		   <span style="color:#FFF; margin-top:20px;">Gender</span>
+		    <input type="radio" value="Male" name="gender" id="mgender" style="margin-top: 20px;" ><span style="color:#FFF; margin-top:20px;">Male</span>
+		   <input type="radio" value="Female" name="gender" id="fgender" style="margin-top: 20px;" ><span style="color:#FFF; margin-top:20px;">Female</span>
+	   </div>
+	  <button id="m_close3" data-target="#subscribe" class="button is-link is-hovered" style="width:300px; margin-top:35px; margin-left:35px;"><b>Continue</b>></button>
+      <div style="padding:5px; margin-left:33px;">
+		  <h3 style="color:lawngreen; font-size:16px; letter-spacing:1px; font-weight:bold;" id="msg"></h3>
+	  </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+			<!----------subscription ------>
+<div id = "subscribe" class = "modal">
+  <div class="modal-background"></div>
+  <div style="width:850px; height:auto; background: #2c2c54; " class="modal-content">
+    <div style="color:white; padding:10px; font-size:30px; font-weight:bold;margin-left:35px;">Subscribe to get more out of Disney+ Hotstar</div>
+     <div class="table">
+		 <table style=" padding: 30px;" cellpadding="11" >
+            <tr>
+                <th style="width: 380px;"></th>
+                <th style="width: 140px"><font style="color: black; background-color: grey; font-size: 10px; font-weight: bolder; padding: 2px;border-radius: 2px;">FREE</font></th>
+                <th style="width: 140px;"><font style="background-color: yellow; color: black; font-size: 10px; font-weight: bolder; padding: 2px 5px;border-radius: 2px; ">VIP</font></th>
+                <th style="width: 140px;"><font style="background-color: aqua; color: black; font-size: 10px; padding: 2px;border-radius: 2px; font-weight: bolder;">PREMIUM</font></th>
+            </tr>
+			 <tr>
+                <td>Unlimited Live Sports</td>
+                <td >✗</td>
+                <td >✓</td>
+                <td >✓</td>
+            </tr>
+            <tr>
+                <td> Hotstar Specials & Star serials before</td>
+                <td >✗</td>
+                <td >✓</td>
+                <td >✓</td>
+            </tr>
+            <tr>
+                <td>Multiplex & new Indian movies</td>
+                <td>✗</td>
+                <td >✓</td>
+                <td >✓</td>
+            </tr>
+            <tr>
+                <td>Disney+ movies, Hollywood movies & Kids<br>
+                    Dubbed in  हिन्दी   ಕನ್ನಡ   বাংলা   తెలుగు</td>
+                <td>✗</td>
+                <td >Only Dubbed </td>
+                <td >English+Dubbed</td>
+            </tr>
+
+            <tr>
+                <td>English shows & Disney+ Originals
+                </td>
+                <td >✗</td>
+                <td >✗</td>
+                <td>✓</td>
+            </tr>
+            <tr>
+                <td>Ad free entertainment
+                </td>
+                <td>✗</td>
+                <td >✗</td>
+                <td >✓</td>
+            </tr>
+            <tr>
+                <td>Screens you can watch on
+                </td>
+                <td >1</td>
+                <td>1</td>
+                <td >2</td>
+            </tr>
+            <tr>
+                <td>
+                    Video quality
+                </td>
+                <td>SD</td>
+                <td >HD</td>
+                <td >4K</td>
+            </tr>
+		 </table>
+	 </div>
+
+        <div style="display: flex; flex-direction: row;" >
+        <a href="#" class="button1">
+            <div style="padding: 10px;"><font style="color: black; background-color: yellow; font-size: 10px; font-weight: 900; padding: 2px;border-radius: 2px;">VIP</font></div>
+            <div id="amount1" style="padding:0px 10px 5px 10px; font-size: 25px; font-weight: bolder;">₹399<font style="font-size: 15px;">/Year</font></div>
+
+        </a>
+        <a href="#" class="button1">
+            <div style="padding: 10px;"><font style="color: black; background-color: aqua; font-size: 10px; font-weight:900; padding: 2px;border-radius: 2px;">PREMIUM</font></div>
+            <div id="amount2" style="padding:0px 10px 5px 10px; font-size: 25px; font-weight: bolder;">₹1499<font style="font-size: 15px;">/Year</font></div>
+
+        </a>
+        <a href="#" class="button1">
+            <div style="padding: 10px;"><font style="color: black; background-color: aqua; font-size: 10px; font-weight: 900; padding: 2px;border-radius: 2px;">PREMIUM</font></div>
+            <div id="amount3" style="padding:0px 10px 5px 10px; font-size: 25px; font-weight: bolder;">₹299<font style="font-size: 15px;">/Month</font></div>
+
+        </a>
+        </div>
+	  <button  id="m_close4" data-target="#modal" style="font-weight:700; font-size: 18px; color:#FFF;padding: 2px; margin-top: 2px;width:90%; margin-top:10px;margin-left:40px; " class="button is-link is-hovered">Continue</button>
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+
+<!-- Start Hero Carousel -->
+		<section class="hero is-medium has-carousel" >
+			<div id="carousel-demo" class="hero-carousel">
+				<div class="item-1" style="width:800px; height:500px;">
+									<img src="/static/sc1.jpg"  >
+									</div>
+									<div class="item-2" style="width:800px; height:500px;">
+										<img src="/static/sc4.jpg"  >
+									</div>
+									<div class="item-3" style="width:800px; height:500px;">
+									<img src="/static/sc3.jpg"  >
+									</div>
+									<div class="item-4" style="width:800px; height:500px;"  >
+								   <img src="/static/sc2.jpg"  >
+									</div>
+				                    <div class="item-5" style="width:800px; height:500px;">
+								<img src="/static/sc1.jpg"  >
+									</div>
+										<div class="item-6" style="width:800px; height:500px;">
+														<img src="/static/sc4.jpg" width="800" >
+														</div>
+
+			</div>
+			<div class="hero-head"></div>
+			<div class="hero-body"></div>
+			<div class="hero-foot"></div>
+		</section>
+		<!-- End Hero Carousel -->
+
+    <div class="show" id="search" class="hero-carousel">
+    </div>
+
+	<div style="color:#FFF; font-weight: bold; font-size:22px; letter-spacing:1px; padding: 5px;">
+		Latest & Trending
+	</div>
+	<section class="hero is-medium has-carousel" style="height:200px;" >
+		<div class="show" id="trending" class="hero-carousel">
+		{% for trending in trows %}
+		<div class="zoom container" style="margin: 5px;">
+			<a href="/preview?row={{ trending }}">
+                <img src="/static/{{ trending.11 }}" class="image" style="width:150px;border-radius: 10px;">
+                <div class="middle">
+                     <div class="text">
+                          <div style="display: flex; flex-direction: row;">
+                              <div style="display: flex; flex-direction: column;">
+                                  <div >
+                                      {{ trending.3 }}: {{ trending.2 }}
+                                  </div>
+                                  <div >
+                                      Year: {{ trending.5 }}
+                                      <span >Rating: {{ trending.6 }}<i class="fas fa-star" style="color: #f9ca24;"></i>
+                                      </span>
+                                  </div>
+                                  <div>
+                                      <div>{{ trending.4 }}</div>
+                                      <div>{{ trending.7 }}</div>
+                                  </div>
+                                  </div>
+                          </div>
+                     </div>
+                  </div>
+            </a>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+		<div style="color:#FFF; font-weight: bold; font-size:22px; letter-spacing:1px; padding: 5px;">
+		Tv Shows & Web Series
+	</div>
+	<section class="hero is-medium has-carousel" style="height:230px;" >
+		<div  id="tvshows" class="hero-carousel">
+		{% for tv in tvrows %}
+		<div class="zoom container" style="margin: 5px;">
+			<a href="/tvpreview?row={{ tv }}">
+                <img src="/static/{{ tv.11 }}" class="image" style="width:150px; height:200px;border-radius: 10px;">
+                <div class="middle">
+                     <div class="text">
+                          <div style="display: flex; flex-direction: row;">
+                              <div style="display: flex; flex-direction: column;">
+                                  <div >
+                                      {{ tv.3 }}: {{ tv.2 }}
+                                  </div>
+                                  <div >
+                                      Year: {{ tv.5 }}
+                                      <span >Rating: {{ tv.6 }}<i class="fas fa-star" style="color: #f9ca24;"></i>
+                                      </span>
+                                  </div>
+                                  <div>
+                                      <div>{{ tv.4 }}</div>
+                                      <div>{{ tv.7 }}</div>
+                                  </div>
+                                  </div>
+                          </div>
+                     </div>
+                  </div>
+            </a>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+
+	<div style="color:#FFF; font-weight: bold; font-size:22px; letter-spacing:1px; padding: 5px;">
+		English Movies
+	</div>
+	<section class="hero is-medium has-carousel" >
+		<div class="show" id="hollywood" class="hero-carousel">
+		{% for em in erows %}
+		<div class="zoom container" style="margin: 5px;">
+			<a href="/preview?row={{ em }}">
+                <img src="/static/{{ em.11 }}" class="image" style="width:150px;border-radius: 10px;">
+                <div class="middle">
+                     <div class="text">
+                          <div style="display: flex; flex-direction: row;">
+                              <div style="display: flex; flex-direction: column;">
+                                  <div >
+                                      {{ em.3 }}: {{ em.2 }}
+                                  </div>
+                                  <div >
+                                      Year: {{ em.5 }}
+                                      <span >Rating: {{ em.6 }}<i class="fas fa-star" style="color: #f9ca24;"></i>
+                                      </span>
+                                  </div>
+                                  <div>
+                                      <div>{{ em.4 }}</div>
+                                      <div>{{ em.7 }}</div>
+                                  </div>
+                                  </div>
+                          </div>
+                     </div>
+                  </div>
+            </a>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+
+            <div class="container2">
+        <div class="box1">
+            <a href="#" class="font">About My App</a>
+            <a href="#" class="font">Trem of Uses</a>
+            <a href="#" class="font">Contact</a>
+            <a href="#" class="font">Home</a>
+          <div style="margin: 10px ; font-size: 14px;" > © 2021 STAR. All Rights Reserved. HBO, Home Box Office and all related channel and programming logos
+                are service marks of, and all related programming visuals and elements are the property of, Home Box Office,
+                Inc. All rights reserved.</div>
+        </div>
+
+        <div class="box2">
+            <div class="font">Contact with us</div>
+            <div>
+                <a  href="#"><i class="fab fa-facebook-square i"></i></a>
+                <a href="#"><i class="fab fa-twitter-square i"></i></a>
+                <a href="#"><i class="fab fa-instagram i"></i></a>
+            </div>
+        </div>
+        <div class="box3">
+            <div class="font">My App</div>
+            <div>
+                <a href="#"><img src="/static/playstore.png"></a>
+                <a href="#"><img src="/static/appstore.png"></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+		<script>
+			bulmaCarousel.attach('#carousel-demo', {
+				slidesToScroll: 1,
+				slidesToShow: 2,
+				autoplay: true,
+				loop: true,
+			});
+		</script>
+		<script>
+			bulmaCarousel.attach('#trending', {
+				slidesToScroll: 1,
+				slidesToShow: 10,
+				pagination: false,
+			});
+		</script>
+		<script>
+			bulmaCarousel.attach('#tvshows', {
+				slidesToScroll: 1,
+				slidesToShow: 10,
+				pagination: false,
+			});
+		</script>
+		<script>
+			bulmaCarousel.attach('#hollywood', {
+				slidesToScroll: 1,
+				slidesToShow: 10,
+				pagination: false,
+			});
+		</script>
+<script>
+         var amt=0
+
+         $("#amount1").click(function(){ amt=399})
+         $("#amount2").click(function(){ amt=1499})
+         $("#amount3").click(function(){ amt=299})
+
+
+         $(".modal-button").click(function() {
+            var target = $(this).data("target");
+            $("html").addClass("is-clipped");
+            $(target).addClass("is-active");
+         });
+
+         $(".modal-close").click(function() {
+            $("html").removeClass("is-clipped");
+            $(this).parent().removeClass("is-active");
+         });
+
+          $("#m_close").click(function() {
+            $("html").removeClass("is-clipped");
+            $(".modal").removeClass("is-active");
+
+           $('#show_mobile').html("+91"+($('#mobileno').val().substring(6).padStart(10,"*")))
+
+             var target = $(this).data("target");
+            $("html").addClass("is-clipped");
+            $(target).addClass("is-active");
+         });
+
+         $("#m_close2").click(function() {
+            $("html").removeClass("is-clipped");
+            $(".modalotp").removeClass("is-active");
+            var target = $(this).data("target");
+        $.getJSON("http://localhost:8000/checkmobilenumber",{mobileno:$('#mobileno').val()},function(data)
+        {
+            if(data)
+            {
+                $('#username').html(data[1])
+                 $.getJSON("http://localhost:8000/usersession",{mobileno:$('#mobileno').val(),username:data[1]},function(data)
+                 {
+                     location.href="http://localhost:8000/userinterface"
+
+                 })
+
+            }
+           else
+            {
+                 $("html").addClass("is-clipped");
+                 $(target).addClass("is-active");
+
+
+            }
+
+        })
+
+         });
+
+          $("#m_close3").click(function() {
+            $("html").removeClass("is-clipped");
+            $(".modaldetail").removeClass("is-active");
+
+
+             var target = $(this).data("target");
+            $("html").addClass("is-clipped");
+            $(target).addClass("is-active");
+
+         });
+
+          $("#m_close4").click(function() {
+
+        $("html").removeClass("is-clipped");
+        $(".modal").removeClass("is-active");
+
+
+       var target = $(this).data("target");
+      $("html").addClass("is-clipped");
+        $(target).addClass("is-active");
+        payment()
+        });
+
+        function payment(){
+
+     var options = {
+	"key": "rzp_test_GQ6XaPC6gMPNwH",
+	"amount": amt*100, // Example: 2000 paise = INR 20
+	"name": "Hotstar",
+	"description": "Payment for Subscription",
+	"image": "/static/dh.svg",// COMPANY LOGO
+	"handler": function (response) {
+		console.log(response);
+
+		            var gender=""
+
+        if($("#mgender").prop("checked"))
+         { gender="Male"}
+
+        if($("#fgender").prop("checked"))
+         { gender="Female"}
+
+
+            $.getJSON("http://localhost:8000/userdetailssubmit",{mobileno:$('#mobileno').val(),username:$('#lusername').val(),age:$('#age').val(),gender:gender,status:'activate'},function(data){
+
+               $('#msg').html(data)
+
+            })
+
+
+
+		      $.getJSON("http://localhost:8000/usersession",{mobileno:$('#mobileno').val(),username:$('#lusername').val()},function(data)
+                 {
+                     location.href="http://localhost:8000/userinterface"
+
+                 })
+
+		// AFTER TRANSACTION IS COMPLETE YOU WILL GET THE RESPONSE HERE.
+	},
+	"prefill": {
+		"name": $('#lusername').val(), // pass customer name
+
+		"contact": $('#mobileno').val() //customer phone no.
+	},
+	"notes": {
+		"address": "address" //customer address
+	},
+	"theme": {
+		"color": "#15b8f3" // screen color
+	}
+};
+console.log(options);
+var propay = new Razorpay(options);
+propay.open();
+
+
+        }
+
+      </script>
+
+</body>
+</html>

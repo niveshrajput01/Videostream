@@ -1,0 +1,90 @@
+<style>
+    .root{
+        display: flex;
+        justify-content: center;
+        align-item: baseline;
+         background: #F3F2EE;
+        height:100vh;
+    }
+    .subdiv{
+          width:1200px;
+          background:#FFF;
+          padding:20px;
+          border-radius:20px;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <script defer src="http://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href= "https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <title>Shows List</title>
+</head>
+<body>
+ <div class="root">
+        <div class="subdiv">
+             <div class="row">
+                <div class="col" style="display: flex; justify-content: center; align-item: center; font-size: 20px; font-weight: bold;letter-spacing:3px; margin-bottom:30px;">
+                    <div style="display:flex; justify-content: center; align-item:center; width:1300px;">
+                        <b>SHOW LIST</b>
+                    </div>
+                    <div style="display:flex; width:180px; justify-content: right; align-item: right;">
+                        <a href="/show"><div class="button is-primary is-light">
+                            Add New Show
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><abbr>Id/<br>Name</abbr></th>
+                    <th><abbr>Type/<br>Description</abbr></th>
+                    <th><abbr>Year/<br>Rating</abbr></th>
+                    <th><abbr>Artist</abbr></th>
+                    <th><abbr>Status/<br>Show Status</abbr></th>
+                    <th><abbr>Episodes</abbr></th>
+                    <th><abbr>Poster</abbr></th>
+                    <th><abbr>Trailerurl</abbr></th>
+                    <th><abbr>Videourl</abbr></th>
+                    <th><abbr>Update</abbr></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row.0 }}-{{ row.14 }}/<br>{{ row.1 }}-{{ row.2 }}</td>
+                    <td >{{ row.3 }}/<br>{{ row.4 }}</td>
+                    <td >{{ row.5 }}/<br>{{ row.6 }}</td>
+                    <td>{{ row.7 }}</td>
+                    <td>{{ row.8 }}/<br>{{ row.9 }}</td>
+                    <td align="center">{{ row.10 }}</td>
+                    <td align="center"><a href="/static/{{ row.11 }}"><img src="/static/{{ row.11 }}" width="35"></a></td>
+                    <td align="center"><a href="/static/{{ row.12 }}"><video width="35"><source src="/static/{{ row.12 }}" type="video/mp4"></video> </a></td>
+                    <td align="center"><a href="/static/{{ row.13 }}"><video width="35"><source src="/static/{{ row.13 }}" type="video/mp4"></video> </a></td>
+                    <td align="center">
+                        <div>
+                            <span class="icon is small is-right" style="margin-right: 15px">
+                                <a href="/showbyid?sid={{ row.1 }}">
+                                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                            <span class="icon is small is-right">
+                                <a href="/showbyid?sid={{ row.1 }}">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+ </div>
+
+</body>
+</html>
